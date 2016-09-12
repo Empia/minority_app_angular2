@@ -1,0 +1,392 @@
+<div id="main" class="container dataTables resources-list">
+<div class="tableMinListWrap dataTablesTable">
+
+
+<div class="newResourceForm">
+<div class="newResourceFormContainer">
+ 
+
+<form id="createResourceFormObject" class="createResourceForm">
+  <pre>{{diagnostic }}</pre>
+   <h3>Create indicator</h3>
+  <button type="submit" (click)="createIndicator()" id="createResourceBtn" class="createMin ajaxLink cacheable resource-add-btn offed">Create</button>
+  <div class="tableMinListFilter search-process-input add-resource-field filterLayer">
+    <!-- <span class="magnifyGlass vIco vLoupe vLight2State"></span>-->
+    <label for="resourceTitle">Indicator name</label>
+    <input type="text" 
+           id="resourceTitle" 
+           name="title" 
+           value=""
+           [(ngModel)]="model.title"
+           class="filterInput tableMinListFilterInput">
+    <!-- <input type="text" size="71" data-toggle-class="hidden" class="filterInput tableMinListFilterInput" placeholder="Name"> -->
+  </div>
+
+</form>
+
+
+</div>
+
+<div class="inlineEntityForm" id="newResourceEntityForm" style="display: none !important;">
+    <div class="" style="display:none;">
+        <h4>Attribute</h4>
+        <form action="/data//entity/create" method="POST">
+            <dl class=" " id="newInlineAttrTitleField_field">
+                <dt><label for="newInlineAttrTitleField">Title</label></dt>
+                <dd>
+                    <input type="text" id="newInlineAttrTitleField" name="title" value="" class="form-control">
+                </dd>
+                <dd class="info">Required</dd>
+            </dl>
+            <dl class=" " id="newInlineAttrDescField_field">
+                <dt><label for="newInlineAttrDescField">Description</label></dt>
+                <dd>
+                    <textarea id="newInlineAttrDescField" name="description" class="form-control"></textarea>
+                </dd>
+            </dl>
+
+            <dl class=" " id="newInlineAttrEtypeField_field">
+                <dt><label for="newInlineAttrEtypeField">Type</label></dt>
+                <dd>
+                    <select id="newInlineAttrEtypeField" name="etype" class="form-control">
+                        <option value="number">Number</option>
+                        <option value="text">Text</option>
+                        <option value="boolean">Boolean</option>
+                    </select>
+                </dd>
+                <dd class="info">Required</dd>
+            </dl>
+
+            <dl class=" " id="newInlineAttrDefaultField_field">
+                <dt><label for="newInlineAttrDefaultField">Default value</label></dt>
+                <dd>
+                    <input type="text" id="newInlineAttrDefaultField" name="default" value="" class="form-control">
+                </dd>
+            </dl>
+            <input type="hidden" name="newInlineAttrMetaField" value="&quot;&quot;">
+        </form>
+
+    </div>
+</div>
+</div>
+
+
+
+<div class="tableMinListFilter search-resource-input filterLayer">
+    <span class="magnifyGlass vIco vLoupe vLight2State"></span>
+    <input type="text" size="41" data-toggle-class="hidden" class="filterInput tableMinListFilterInput" placeholder="Search indicators" style="">
+</div>
+
+
+
+<div class="panelLike organisationsGridLike redDataGrid">
+    <ul ul="" id="tablemin" class="tableMinList processList resourceList">
+        <div class="resource" *ngFor="let indicator of indicators; let i = index" id="resource-{{indicator.resource.id}}">
+            <div class="resource-object">
+                <li class="tableMinListItem">
+                    <div class="resourceElementHeader">
+                        <h2 class="tableMinListName">
+          <a class="tableMinName vIcoIn" href="#">{{ indicator.resource.title }}</a>
+        </h2>
+                        <div class="tableMinListControls processListControls">
+                            <!-- <a class="tableMinControlsLink ajaxLink tableMinLinkPeople"><span class="uicon-svg98"></span>Boards</a>-->
+                            <!--<a class="tableMinControlsLink teamSettingsLink tableMinLinkSettings" ng-click="modalShare(bprocess.id)"><span class="minicon-share"></span> {{ 'SHARE' | translate }}</a>
+        <a class="tableMinControlsLink teamSettingsLink tableMinLinkSettings" href="/a#/launches?process={{ bprocess.id }}"><span class="uicon-svg372"></span>{{ 'STATIONS' | translate }}</a>-->
+
+
+
+                            <form action="/data/resource/39/delete" method="POST" class="topRight">
+                                <button type="submit" class="icon-trash" href="39"></button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="boards">
+                        <div class="board">
+                            <h4 class="board-title">Cost board</h4>
+                            <span class="boardContent">Cost for test resource fs</span>
+                            <div class="entities" style="">
+                                <!--<a href="/data/39/a9f83471-e2db-432b-a26b-72c7425ab001/entity/new" class="btn success btn-success createEntity" id="entityCreateBtn">Create Attribute</a>-->
+
+                                <div class="boardEntity">
+                                    <div class="entityHeader">
+                                        <h4 class="entityHeaderTitle">Value</h4>
+                                        <div class="entityHeaderEntityType">text</div>
+                                        <div class="entityHeaderEntityDefaultValue"></div>
+                                    </div>
+
+                                    <!-- entity form -->
+                                    <div class="inlineEntityForm">
+
+                                        <form action="/data/entity/ad092990-b3a6-4d51-9503-2ed8d5a51cbe/update" method="POST" class="updateEntityForm" id="entity-ad092990-b3a6-4d51-9503-2ed8d5a51cbe">
+                                            <dl class=" " id="title_field">
+                                                <dt><label for="title">Title</label></dt>
+                                                <dd>
+                                                    <input type="text" id="title" name="title" value="Value" class="form-control">
+                                                </dd>
+                                                <dd class="info">Required</dd>
+                                            </dl>
+
+                                            <dl class=" " id="description_field">
+                                                <dt><label for="description">Description</label></dt>
+                                                <dd>
+                                                    <textarea id="description" name="description" class="form-control"></textarea>
+                                                </dd>
+                                            </dl>
+
+                                            <dl class=" " id="etype_field">
+                                                <dt><label for="etype">Type</label></dt>
+                                                <dd>
+                                                    <select id="etype" name="etype" class="form-control">
+                                                        <option value="number">Number</option>
+                                                        <option value="text" selected="selected">Text</option>
+                                                        <option value="boolean">Boolean</option>
+                                                    </select>
+                                                </dd>
+                                                <dd class="info">Required</dd>
+                                            </dl>
+
+                                            <dl class=" " id="default_field">
+                                                <dt><label for="default">Default value</label></dt>
+                                                <dd>
+                                                    <input type="text" id="default" name="default" value="" class="form-control">
+                                                </dd>
+                                            </dl>
+
+                                            <input type="hidden" name="inlineEntityFormMetaField" value="">
+                                            <div class="form-actions">
+                                                <button class="" type="submit" data-toggle="tooltip" data-placement="right" title="" data-original-title="Update attribute">
+                                                    <span class="moicon icon-pencil"></span>
+                                                </button>
+                                            </div>
+                                        </form>
+
+
+                                        <div class="inlineEntityFormDelete" style="display: none;">
+                                            <button class="showEditEntityForm" id="showEditEntityForm-ad092990-b3a6-4d51-9503-2ed8d5a51cbe" data-toggle="tooltip" data-placement="right" data-entity-id="ad092990-b3a6-4d51-9503-2ed8d5a51cbe" title="" data-original-title="Update attribute">
+                                                Edit
+                                            </button>
+
+                                            <form action="/data/entity/ad092990-b3a6-4d51-9503-2ed8d5a51cbe/delete" method="POST">
+                                                <button type="submit" class="tableMinControlsLink teamSettingsLink tableMinLinkDelete">
+                                                    Delete
+                                                </button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+
+
+                                    <!-- @entity.meta.map { meta =>  -->
+                                    <!--   <b>@meta.key - @meta.value</b> -->
+                                    <!-- } -->
+                                    <div class="slats" style="display: none;">
+                                        <a href="/data/ent/ad092990-b3a6-4d51-9503-2ed8d5a51cbe/slat/new" class="btn success btn-success">Create Instance</a>
+                                        <div class="entitySlat">
+                                            <a href="/data/ent/ad092990-b3a6-4d51-9503-2ed8d5a51cbe/slat/36fbab60-04a1-4e1d-bf34-29b28b388760/edit">
+                            Value
+                            12
+                          </a>
+
+                                            <form action="/data/slat/36fbab60-04a1-4e1d-bf34-29b28b388760/delete" method="POST">
+                                                <button type="submit" class="btn danger deleteSlat"><span class="moicon icon-trash"></span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- new entity form -->
+                                <div class="inlineEntityForm">
+                                    <form action="/data/a9f83471-e2db-432b-a26b-72c7425ab001/entity/create" method="POST" class="inlineEntityFormNewForm">
+
+                                        <dl class=" " id="title_field">
+                                            <dt><label for="title">Title</label></dt>
+                                            <dd>
+                                                <input type="text" id="title" name="title" value="" class="form-control">
+                                            </dd>
+                                            <dd class="info">Required</dd>
+                                        </dl>
+
+                                        <dl class=" " id="description_field">
+                                            <dt><label for="description">Description</label></dt>
+                                            <dd>
+                                                <textarea id="description" name="description" class="form-control"></textarea>
+                                            </dd>
+                                        </dl>
+
+                                        <dl class=" " id="etype_field">
+                                            <dt><label for="etype">Type</label></dt>
+                                            <dd>
+                                                <select id="etype" name="etype" class="form-control">
+                                                    <option value="number">Number</option>
+                                                    <option value="text">Text</option>
+                                                    <option value="boolean">Boolean</option>
+                                                </select>
+                                            </dd>
+                                            <dd class="info">Required</dd>
+                                        </dl>
+
+                                        <dl class=" " id="default_field">
+                                            <dt><label for="default">Default value</label></dt>
+                                            <dd>
+                                                <input type="text" id="default" name="default" value="" class="form-control">
+                                            </dd>
+                                        </dl>
+
+
+                                        <input type="hidden" name="newInlineEntityForm" value="&quot;&quot;">
+                                        <div class="form-actions">
+                                            <button class="btn" type="submit" data-toggle="tooltip" data-placement="right" title="" data-original-title="Create attribute">
+                                                <span class="moicon icon-plus"></span>
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                    <div class="formNewEntityNav" style="display: none;">
+                                        <button id="createResourceBtn" class="createMin ajaxLink cacheable resource-add-btn offed add-entity-toggle">Add attribute</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </div>
+        </div>
+
+
+        <div class="process-indicator-data-table" style="display:none;" *ngFor="let process of indicators.processes; let i = index" ng-repeat="process in indicators.processes">
+            <div class="process-indicator-data-table-title">{{process.title}}</div>
+            <div class="process-indicator-data-table-expand-process" ng-click="process.showIndicators?process.showIndicators=false:process.showIndicators=true" ng-class="process.showIndicators?'expanded':' '">
+                <span class="minicon minicon-line-graph"></span>
+            </div>
+
+            <table class="table table-with-indicators">
+                <thead>
+                    <!-- ngIf: params.hasGroup() -->
+                    <tr class="ng-table-sort-header">
+                        <th class="header">
+                            Launch</th>
+                        <th>Elements</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="indy in indicators.launches_indicators | filter:indicatorsByProcessRes(process, 39)">
+                        <td>
+                            Launch {{indy.launch.id}} process: {{indy.launch.process}}
+                        </td>
+                        <td>
+                            <!-- Nested table with indicators -->
+                            <table class="table table-with-indicators">
+                                <thead>
+                                    <!-- ngIf: params.hasGroup() -->
+                                    <tr class="ng-table-sort-header">
+                                        <th ng-repeat="el in indy.elements">
+                                            {{el.element.title}}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td ng-repeat="el in indy.elements">
+                                            <li ng-repeat="indicator in el.indicators | filter:byTopoElement(el, 39 )">
+                                                {{ indicator | json}}
+                                            </li>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <div class="indicator-data-table-container" ng-show="process.showIndicators">
+                <table ng-table-dynamic="tableParams with cols" class="table table-with-indicators">
+                    <tbody>
+                        <tr ng-repeat="row in $data">
+                            <td ng-repeat="col in $columns">{{row[col.field]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="process-indicator-data-table" style="display:none;" *ngFor="let process of indicators.processes; let iproc = index">
+            <div class="process-indicator-data-table-title">{{process.title}}</div>
+            <div class="process-indicator-data-table-expand-process" ng-click="process.showIndicators?process.showIndicators=false:process.showIndicators=true" ng-class="process.showIndicators?'expanded':' '">
+                <span class="minicon minicon-line-graph"></span>
+            </div>
+
+
+            <table class="table table-with-indicators">
+                <thead>
+                    <!-- ngIf: params.hasGroup() -->
+                    <tr class="ng-table-sort-header">
+                        <th class="header">
+                            Launch</th>
+                        <th>Elements</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let indy of indicators.launches_indicators; let i = index" ng-repeat="indy in indicators.launches_indicators | filter:indicatorsByProcessRes(process, 40)">
+                        <td>
+                            Launch {{indy.launch.id}} process: {{indy.launch.process}}
+                        </td>
+                        <td>
+                            <!-- Nested table with indicators -->
+                            <table class="table table-with-indicators">
+                                <thead>
+                                    <!-- ngIf: params.hasGroup() -->
+                                    <tr class="ng-table-sort-header">
+                                        <th *ngFor="let el of indy.elements; let i = index" ng-repeat="el in indy.elements">
+                                            {{el.element.title}}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td *ngFor="let el of indy.elements; let i = index" ng-repeat="el in indy.elements">
+                                            <li *ngFor="let indicator of el.indicators; let i = index" ng-repeat="indicator in el.indicators | filter:byTopoElement(el, 40 )">
+                                                {{ indicator | json}}
+                                            </li>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </td>
+
+                    </tr>
+                </tbody>
+
+            </table>
+
+
+            <div class="indicator-data-table-container" ng-show="process.showIndicators">
+                <table ng-table-dynamic="tableParams with cols" class="table table-with-indicators">
+                    <tbody>
+                        <tr *ngFor="let row of $data; let i = index" ng-repeat="row in $data">
+                            <td *ngFor="let col of $columns; let i = index" ng-repeat="col in $columns">row[col.field]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </ul>
+</div>
+</div>
+
+
+
+</div>

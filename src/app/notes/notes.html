@@ -1,0 +1,8 @@
+<div class="md-content">
+ <div class="app-content">
+   <div class="md-card" *ngFor="let flownote of flownotes; let i = index">
+    {{ flownote.title }}
+    <pre>{{ flownote | json }}</pre>
+  </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+  <!--
+    <div  (setVerified) = "setVerified($event)" 
+          googlerecaptcha [siteKey] = "siteKey" [theme] = 'theme' ></div>
+  -->
+
+
+<div class="data-container-nav">
+<!--
+  <a [routerLink]=" ['./'] ">Index</a>
+-->
+  <a [routerLink]=" ['./indicators'] " [routerLinkActive]="['active']">Indicators</a>
+  <a [routerLink]=" ['./acts'] " [routerLinkActive]="['active']">Acts</a>
+<!--
+  <a [routerLink]=" ['./cards'] " [routerLinkActive]="['active']">Cards</a>
+  <a [routerLink]=" ['./objects'] " [routerLinkActive]="['active']">Objects</a>
+  <a [routerLink]=" ['./notes'] " [routerLinkActive]="['active']">Notes</a>
+-->
+
+
+<!--
+  <a [routerLink]=" ['./home'] " [routerLinkActive]="['active']">Home</a>
+  <a [routerLink]=" ['./detail'] " [routerLinkActive]="['active']">Detail</a>
+  <a [routerLink]=" ['./about'] " [routerLinkActive]="['active']">About</a>
+-->
+
+</div>
+
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+
+<!--
+    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
+
+    <footer>
+      <span><a [href]="url">Minority workflow platofrm</a></span>
+      <div>
+        <a [href]="url">
+        </a>
+      </div>
+    </footer>
+-->

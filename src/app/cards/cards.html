@@ -1,0 +1,76 @@
+<div class=="md-content">
+ <div class="app-content">
+
+  <div class="md-card">
+    New card name:
+    <input #newObjectName />
+    <button (click)="addObject(newObjectName.value); newObjectName.value=''">
+      Add Card
+    </button>
+    <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+
+  </div>
+
+
+<div class="card-stages">
+<div class="card-stage">
+
+<h2 class="card-stage-header">New</h2>
+
+<div class="minority-flow-card" *ngFor="let object of flowCards; let i = index">
+  <div class="minority-flow-card-title">{{ object.name }}</div>
+  <div class="minority-flow-card-desc">Desc</div>
+  <div class="minority-flow-card-info">
+    <div class="minority-flow-card-info-priority">1</div>
+    <div class="minority-flow-card-info-due-date">01.09.2016</div>
+    <div class="minority-flow-card-info-objects">Objects
+      <div class="minority-flow-card-info-objects-count">10</div>
+    </div>  
+    <div class="md-button" (click)="removeObject(object)">Remove</div>
+  </div>
+</div>
+
+</div>
+
+
+
+<div class="card-stage">
+
+<h2 class="card-stage-header">In progress</h2>
+
+<div class="minority-flow-card" *ngFor="let object of flowCards2; let i = index">
+  <div class="minority-flow-card-title">{{ object.name }}</div>
+  <div class="minority-flow-card-desc">Desc</div>
+  <div class="minority-flow-card-info">
+    <div class="minority-flow-card-info-priority">1</div>
+    <div class="minority-flow-card-info-due-date">01.09.2016</div>
+    <div class="minority-flow-card-info-objects">Objects
+      <div class="minority-flow-card-info-objects-count">10</div>
+    </div>  
+    <div class=="md-button" (click)="removeObject(object)">Remove</div>
+  </div>
+</div>
+
+</div>
+
+
+
+<div class="card-stage">
+
+<h2 class="card-stage-header">Finished</h2>
+
+<div class="minority-flow-card" *ngFor="let object of flowCards3; let i = index">
+  <div class="minority-flow-card-title">{{ object.name }}</div>
+  <div class="minority-flow-card-desc">Desc</div>
+  <div class="minority-flow-card-info">
+    <div class="minority-flow-card-info-priority">1</div>
+    <div class="minority-flow-card-info-due-date">01.09.2016</div>
+    <div class="minority-flow-card-info-objects">Objects
+      <div class="minority-flow-card-info-objects-count">10</div>
+    </div>  
+    <div class=="md-button" (click)="removeObject(object)">Remove</div>
+
+  </div>
+</div>
+
+</div>
