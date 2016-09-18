@@ -90,3 +90,32 @@
     border-radius: 4px;
 
 }
+
+
+
+
+
+
+form#updateResourceFormObject {}
+
+form#updateResourceFormObject label {
+    font-size: 12px;
+}
+
+form#updateResourceFormObject input#resourceTitle {
+    background: none;
+    border: none;
+    border-bottom: solid 1px gray;
+    width: 52%;
+}
+
+form#updateResourceFormObject .updateResourceFormObjectSubmit {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+form#updateResourceFormObject .updateResourceFormObjectSubmit button#createResourceBtn {
+    margin-right: 27%;
+}
+

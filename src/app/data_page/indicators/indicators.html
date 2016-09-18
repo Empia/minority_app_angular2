@@ -86,8 +86,24 @@
                 <li class="tableMinListItem">
                     <div class="resourceElementHeader">
                         <h2 class="tableMinListName">
-          <a class="tableMinName vIcoIn" href="#">{{ indicator.resource.title }}</a>
-        </h2>
+                          <a class="tableMinName vIcoIn" href="#">{{ indicator.resource.title }}</a>
+                        </h2>
+
+<form id="updateResourceFormObject">
+  <div class="">
+    <label for="resourceTitle">Indicator name</label>
+    <input type="text" 
+           id="resourceTitle" 
+           name="title" 
+           value=""
+           [(ngModel)]="indicator.resource.title"
+           class="filterInput tableMinListFilterInput">
+  </div>
+  <div class="updateResourceFormObjectSubmit">
+      <button type="submit" (click)="editIndicator(indicator.updatedResource)" id="createResourceBtn" class="createMin ajaxLink cacheable resource-add-btn offed">Update</button>      
+  </div>
+</form>
+
                         <div class="tableMinListControls processListControls">
                             <!-- <a class="tableMinControlsLink ajaxLink tableMinLinkPeople"><span class="uicon-svg98"></span>Boards</a>-->
                             <!--<a class="tableMinControlsLink teamSettingsLink tableMinLinkSettings" ng-click="modalShare(bprocess.id)"><span class="minicon-share"></span> {{ 'SHARE' | translate }}</a>
@@ -95,8 +111,10 @@
 
 
 
-                            <form action="/data/resource/39/delete" method="POST" class="topRight">
-                                <button type="submit" class="icon-trash" href="39"></button>
+                            <form class="topRight">
+                                <button class="icon-trash" (click)="editIndicatorPage(indicator.resource)"></button>
+
+                                <button class="icon-trash" (click)="deleteIndicator(indicator.resource)"></button>
                             </form>
                         </div>
                     </div>

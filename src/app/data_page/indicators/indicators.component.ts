@@ -1,6 +1,6 @@
 import { Component, Pipe } from '@angular/core';
 import { Injectable }     from '@angular/core';
-import { Http, Response,Headers } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/Rx';
@@ -16,6 +16,7 @@ console.log('`Indicators` component loaded asynchronously');
 class Indicator {
   constructor(
     public title: string,
+    public business: number
   ) {  }
 
 }
@@ -31,6 +32,7 @@ export class Indicators {
   localState;
   processObserver;
   observerableHeroes;
+  model;
 
   processes = [{id: 1,title: "ff"},{id: 12,title: "ff"}];
 
@@ -44,29 +46,75 @@ export class Indicators {
   constructor(public route: ActivatedRoute,
               private http: Http) {
     this.headers = new Headers();
+    this.resetIndicatorForm();
   }
 
 
 
-  model = new Indicator('');
+  resetIndicatorForm() {
+    this.model = new Indicator('', 0);    
+  }
+
+
   get diagnostic() { return JSON.stringify(this.model); }
 
 
   createIndicator() {
-    console.log('<this class="model"></this>', this.model);
     //   POST   /api/data/:boardId/entity/create
-    this.observerableHeroes = this.getHeroes();
-    return true;
+
+    let body = JSON.stringify(this.model);
+    console.log('<this class="model"></this>', body);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    let promise = this.http.post('api/v1/data/resource_signle', body, options)
+                    .map(c => {
+                      console.log(c);                  
+                    })
+                    .catch(this.handleError);    
+    promise.subscribe(obj => {
+      this.resetIndicatorForm();
+      this.observerableHeroes = this.getHeroes();    
+    })
+    return promise;                
+    // POST     /api/v1/data/resource_signle
   }
-  editIndicator() {
-    //   POST   /api/data/entity/:id/update
-    this.observerableHeroes = this.getHeroes();
-    return true;
-  }
-  deleteIndicator() {
+
+
+
+
+  editIndicator(updatedResource) {
+    //   POST   /data/resource/:id
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let body = JSON.stringify(updatedResource)
+    console.log('updatedResource '+updatedResource)
+    let promise = this.http.put('data/resource/'+updatedResource.id, body, options)
+                    .map(c => {
+                      console.log(c);                  
+                    })
+                    .catch(this.handleError);    
+    promise.subscribe(obj => {
+      this.resetIndicatorForm();
+      this.observerableHeroes = this.getHeroes();    
+    })
+    return promise;  
+  };
+
+  deleteIndicator(resource) {
     //   POST     /data/entity/:id/delete
-    this.observerableHeroes = this.getHeroes();    
-    return true;
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let promise = this.http.post('data/resource/'+resource.id+'/delete', {}, options)
+                    .map(c => {
+                      console.log(c);                  
+                    })
+                    .catch(this.handleError);    
+    promise.subscribe(obj => {
+      this.resetIndicatorForm();
+      this.observerableHeroes = this.getHeroes();    
+    })
+    return promise;  
   }
 
 
@@ -90,10 +138,14 @@ export class Indicators {
                   entities: obj.board_cn[0].entities.filter(entity => { return entity.boardId == board.id })
                 }
               });
-              return { resource: obj.resource, board_cn: boardWithEntities }
+              return { resource: obj.resource, 
+                       updatedResource: Object.assign(obj.resource), 
+                       board_cn: boardWithEntities }
             } else { 
               let boardWithEntities = [] 
-              return { resource: obj.resource, board_cn: boardWithEntities }
+              return { resource: obj.resource, 
+                       updatedResource: Object.assign(obj.resource), 
+                       board_cn: boardWithEntities }
             } 
           });
           console.log(this.indicators);
