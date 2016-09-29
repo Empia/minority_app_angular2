@@ -1,5 +1,5 @@
   <!--
-    <div  (setVerified) = "setVerified($event)" 
+    <div  (setVerified) = "setVerified($event)"
           googlerecaptcha [siteKey] = "siteKey" [theme] = 'theme' ></div>
   -->
 
@@ -8,8 +8,11 @@
 <!--
   <a [routerLink]=" ['./'] ">Index</a>
 -->
-  <a [routerLink]=" ['./indicators'] " [routerLinkActive]="['active']">Indicators</a>
-  <a [routerLink]=" ['./acts'] " [routerLinkActive]="['active']">Acts</a>
+  <a [routerLink]="['./indicators']"
+      [routerLinkActive]="['active']">Indicators</a>
+
+  <a [routerLink]=" ['./acts']"
+     [ngClass]="isRootActive('/acts')">Acts</a>
 <!--
   <a [routerLink]=" ['./cards'] " [routerLinkActive]="['active']">Cards</a>
   <a [routerLink]=" ['./objects'] " [routerLinkActive]="['active']">Objects</a>

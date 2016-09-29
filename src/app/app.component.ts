@@ -2,7 +2,7 @@
  * Angular 2 decorators and services
  */
 import { Component, ViewEncapsulation } from '@angular/core';
-
+import { Router, ActivatedRoute} from '@angular/router';
 import { AppState } from './app.service';
 
 /*
@@ -19,11 +19,24 @@ import { AppState } from './app.service';
 })
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
-  name = 'Angular 2 Webpack Starter';
-  url = 'https://twitter.com/AngularClass';
+  name = '';
+  url = '';
 
   constructor(
-    public appState: AppState) {
+    public appState: AppState,
+    private router: Router,
+    private activatedRoute:ActivatedRoute) {
+
+  }
+
+  /**
+   * Active route link helper
+   */
+  isRootActive(instruction: any): any {
+    console.log("class", instruction, this.router.url === "/" && instruction === "acts")
+    return {
+      active: (this.router.url === "/" && instruction === "/acts") || (this.router.url === "/acts")
+    }
 
   }
 
