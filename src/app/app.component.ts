@@ -4,6 +4,24 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { AppState } from './app.service';
+import ApolloClient, { createNetworkInterface } from 'apollo-client';
+import gql from 'graphql-tag';
+
+
+const client = new ApolloClient();
+const CurrentUserForProfile = gql`
+query CurrentUserForProfile($episode: Episode!) {
+  hero(episode: $episode) {
+  name
+}
+__schema {
+  types {
+    name
+  }
+}
+
+}
+`;
 
 /*
  * App Component
@@ -18,7 +36,7 @@ import { AppState } from './app.service';
   templateUrl: './app.html'
 })
 export class App {
-  angularclassLogo = 'assets/img/angularclass-avatar.png';
+  logo = 'assets/img/avatar.png';
   name = '';
   url = '';
 
@@ -42,6 +60,21 @@ export class App {
 
   ngOnInit() {
     console.log('Initial App State', this.appState.state);
+    console.log(CurrentUserForProfile);
+
+
+    client.watchQuery({
+      query: CurrentUserForProfile,
+      variables: {
+        episode: 'NEWHOPE'
+      }
+}).subscribe(({data}) => {
+console.log(data)
+
+
+});
+
+
   }
 
 }
