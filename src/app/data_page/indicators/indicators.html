@@ -4,18 +4,18 @@
 
 <div class="newResourceForm">
 <div class="newResourceFormContainer">
- 
+
 
 <form id="createResourceFormObject" class="createResourceForm">
-  <pre>{{diagnostic }}</pre>
+  <pre class="dev-flag" style="display: none;">{{diagnostic }}</pre>
    <h3>Create indicator</h3>
   <button type="submit" (click)="createIndicator()" id="createResourceBtn" class="createMin ajaxLink cacheable resource-add-btn offed">Create</button>
   <div class="tableMinListFilter search-process-input add-resource-field filterLayer">
     <!-- <span class="magnifyGlass vIco vLoupe vLight2State"></span>-->
     <label for="resourceTitle">Indicator name</label>
-    <input type="text" 
-           id="resourceTitle" 
-           name="title" 
+    <input type="text"
+           id="resourceTitle"
+           name="title"
            value=""
            [(ngModel)]="model.title"
            class="filterInput tableMinListFilterInput">
@@ -89,18 +89,18 @@
                           <a class="tableMinName vIcoIn" href="#">{{ indicator.resource.title }}</a>
                         </h2>
 
-<form id="updateResourceFormObject">
+<form id="updateResourceFormObject" class="updateResourceFormObject" [ngClass]="{updating: indicator.updating === true}">
   <div class="">
     <label for="resourceTitle">Indicator name</label>
-    <input type="text" 
-           id="resourceTitle" 
-           name="title" 
+    <input type="text"
+           id="resourceTitle"
+           name="title"
            value=""
            [(ngModel)]="indicator.resource.title"
            class="filterInput tableMinListFilterInput">
   </div>
   <div class="updateResourceFormObjectSubmit">
-      <button type="submit" (click)="editIndicator(indicator.updatedResource)" id="createResourceBtn" class="createMin ajaxLink cacheable resource-add-btn offed">Update</button>      
+      <button type="submit" (click)="editIndicator(indicator.updatedResource)" id="createResourceBtn" class="createMin ajaxLink cacheable resource-add-btn offed">Update</button>
   </div>
 </form>
 
@@ -112,8 +112,7 @@
 
 
                             <form class="topRight">
-                                <button class="icon-trash" (click)="editIndicatorPage(indicator.resource)"></button>
-
+                                <button class="icon-pencil" (click)="indicator.updating ? indicator.updating=false : indicator.updating=true; "></button>
                                 <button class="icon-trash" (click)="deleteIndicator(indicator.resource)"></button>
                             </form>
                         </div>
@@ -123,7 +122,7 @@
                         <div class="board">
                             <h4 class="board-title">Cost board</h4>
                             <span class="boardContent">Cost for test resource fs</span>
-                            <div class="entities" style="">
+                            <div class="entities" [ngClass]="{updating: indicator.updating === true}">
                                 <!--<a href="/data/39/a9f83471-e2db-432b-a26b-72c7425ab001/entity/new" class="btn success btn-success createEntity" id="entityCreateBtn">Create Attribute</a>-->
 
                                 <div class="boardEntity">

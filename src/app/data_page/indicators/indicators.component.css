@@ -75,6 +75,7 @@
     background-color: white;
     border-radius: 4px;
     padding-bottom: 18px;
+    float: left;
     width: 20%;
     display: inline-block;
     border: solid 1px #1d1d1d54;
@@ -84,7 +85,7 @@
 
 
 .resourceList .resource:before {
-  
+
     border: solid 1px #1d1d1d54;
     position: absolute;
     border-radius: 4px;
@@ -119,3 +120,12 @@ form#updateResourceFormObject .updateResourceFormObjectSubmit button#createResou
     margin-right: 27%;
 }
 
+.updateResourceFormObject {
+  display: none;
+}
+.updateResourceFormObject.updating {
+  display: block;
+}
+.entities.updating {
+  display: none;
+}
